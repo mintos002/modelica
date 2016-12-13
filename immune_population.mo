@@ -8,11 +8,13 @@ equation
   
   Activation=floor(ImmunePop/Immune_period);
   
-  VaccinationRate=floor(Vaccinations/Vaccination_period);
+  VaccinationRate=floor(Vaccinations/Vaccination_period*Vaccination_effectiveness);
+  
   if vaccination==0 then
     der(ImmunePop)=CureRate-Activation;
   else
     der(ImmunePop)=CureRate-Activation+VaccinationRate;
   end if;
+ 
   poutput.ps[1]=ImmunePop;
 end Immune_population;

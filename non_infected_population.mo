@@ -10,7 +10,8 @@ equation
 
   InfectionRate=min(floor(NonInfectedPop*C_wk*PercInfected*Rate_C+InitialPop), NonInfectedPop);
   
-  VaccinationRate=floor(Vaccinations/Vaccination_period);
+  VaccinationRate=floor(Vaccinations/Vaccination_period*Vaccination_effectiveness);
+  
   if vaccination==0 then
     der(NonInfectedPop)=Activation-InfectionRate;
   else
